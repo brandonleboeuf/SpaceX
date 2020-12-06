@@ -7,7 +7,7 @@ export default function Home({ launches }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>SpaceX Launches App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
