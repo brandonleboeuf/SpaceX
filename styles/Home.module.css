@@ -69,18 +69,22 @@
   font-size: 1.1rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
+  color: black;
 }
 
 .grid {
   display: flex;
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 800px;
+  /* max-width: 800px; */
   margin-top: 3rem;
 }
 
 .card {
+  display: flex;
+  justify-content: space-between;
   margin: 1rem;
   flex-basis: 45%;
   padding: 1.5rem;
@@ -89,14 +93,16 @@
   text-decoration: none;
   border: 1px solid #eaeaea;
   border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  transition: 0.3s ease-in-out;
+  background-color: rgba(255, 255, 255, 0.25);
 }
 
 .card:hover,
 .card:focus,
 .card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+  color: black;
+  border-color: black;
+  background-color: rgba(255, 255, 255, 0.85);
 }
 
 .card h3 {
