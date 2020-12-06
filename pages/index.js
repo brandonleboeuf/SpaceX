@@ -7,13 +7,6 @@ export default function Home({ launches }) {
   console.log("launchs", launches);
 
   const [launchNum, setLaunchNum] = useState(10);
-  // const launchMAP = [];
-
-  // useEffect(() => {
-  //   for (let i = 0; i <= launchNum; i++) {
-  //     launchMAP.push(launches[i])s;
-  //   }
-  // }, []);
 
   return (
     <div className={styles.container}>
@@ -32,7 +25,7 @@ export default function Home({ launches }) {
         <div className={styles.grid}>
           {!launches
             ? "Loading..."
-            : launches.slice(0, launchNum).map((launch) => {
+            : launches.slice(2, launchNum).map((launch) => {
                 return (
                   <a
                     key={launch.id}
@@ -52,6 +45,7 @@ export default function Home({ launches }) {
                           maxWidth: "200px",
                           maxHeight: "200px",
                           margin: "15px",
+                          float: "right",
                         }}
                       />
                       <p>
