@@ -105,6 +105,10 @@
   background-color: rgba(255, 255, 255, 0.85);
 }
 
+.margin {
+  margin-bottom: 15px;
+}
+
 .card h3 {
   margin: 0 0 1rem 0;
   font-size: 1.5rem;
@@ -114,6 +118,7 @@
   margin: 0;
   font-size: 1.25rem;
   line-height: 1.5;
+  margin-bottom: 1.5rem;
 }
 
 .logo {
