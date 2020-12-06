@@ -1,9 +1,20 @@
 import Head from "next/head";
+import { useState, useEffect } from "react";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import styles from "../styles/Home.module.css";
 
 export default function Home({ launches }) {
   console.log("launchs", launches);
+
+  const [launchNum, setLaunchNum] = useState(10);
+  // const launchMAP = [];
+
+  // useEffect(() => {
+  //   for (let i = 0; i <= launchNum; i++) {
+  //     launchMAP.push(launches[i])s;
+  //   }
+  // }, []);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -19,45 +30,55 @@ export default function Home({ launches }) {
         <code className={styles.code}>https://spacex.land/</code>
 
         <div className={styles.grid}>
-          {!launches && "Loading..."}
-          {launches.map((launch) => {
-            return (
-              <a
-                key={launch.id}
-                href={launch.links.video_link}
-                href={launch.links.article_link}
-                className={styles.card}
-              >
-                <div>
-                  <h3>Mission Name: {launch.mission_name}</h3>
-                  <p>
-                    <strong>Rocket Type:</strong> {launch.rocket.rocket_name}
-                  </p>
-                  <img
-                    src={launch.links.mission_patch}
-                    style={{
-                      maxWidth: "200px",
-                      maxHeight: "200px",
-                      margin: "15px",
-                    }}
-                  />
-                  <p>
-                    <strong>Launch Time: </strong>
-                    {new Date(launch.launch_date_local).toLocaleDateString(
-                      "en-US"
-                    )}
-                  </p>
-                  <div>
-                    <p>
-                      <strong>Details: </strong>
-                      {launch.details ? launch.details : "N/A"}
-                    </p>
-                  </div>
-                </div>
-              </a>
-            );
-          })}
+          {!launches
+            ? "Loading..."
+            : launches.slice(0, launchNum).map((launch) => {
+                return (
+                  <a
+                    key={launch.id}
+                    href={launch.links.video_link}
+                    href={launch.links.article_link}
+                    className={styles.card}
+                  >
+                    <div>
+                      <h3>Mission Name: {launch.mission_name}</h3>
+                      <p>
+                        <strong>Rocket Type:</strong>{" "}
+                        {launch.rocket.rocket_name}
+                      </p>
+                      <img
+                        src={launch.links.mission_patch}
+                        style={{
+                          maxWidth: "200px",
+                          maxHeight: "200px",
+                          margin: "15px",
+                        }}
+                      />
+                      <p>
+                        <strong>Launch Time: </strong>
+                        {new Date(launch.launch_date_local).toLocaleDateString(
+                          "en-US"
+                        )}
+                      </p>
+                      <div>
+                        <p>
+                          <strong>Details: </strong>
+                          {launch.details ? launch.details : "N/A"}
+                        </p>
+                      </div>
+                    </div>
+                  </a>
+                );
+              })}
         </div>
+        <button
+          onClick={() => {
+            setLaunchNum(launchNum + 10);
+          }}
+          className={styles.btn}
+        >
+          Load More
+        </button>
       </main>
 
       <footer className={styles.footer}>
@@ -82,7 +103,7 @@ export async function getStaticProps() {
   const { data } = await client.query({
     query: gql`
       {
-        launchesPast(limit: 10) {
+        launchesPast {
           id
           mission_name
           launch_date_local
