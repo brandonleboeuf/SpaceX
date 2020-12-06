@@ -19,7 +19,7 @@ export default function Home({ launches }) {
         <h1 className={styles.title}>SpaceX Launches</h1>
 
         <p className={styles.description}>Latest launches from SpaceX</p>
-        <p>GraphQL will be used to get data from:</p>
+        <p>GraphQL is being be used to get data from:</p>
         <code className={styles.code}>https://spacex.land/</code>
 
         <div className={styles.grid}>
