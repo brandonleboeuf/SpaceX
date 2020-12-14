@@ -20,7 +20,11 @@ export default function Home({ launches }) {
 
         <p className={styles.description}>Latest launches from SpaceX</p>
         <p>GraphQL is being be used to get data from:</p>
-        <code className={styles.code}>https://spacex.land/</code>
+        <code className={styles.code}>
+          <a href="https://spacex.land/" style={{ textDecoration: "none" }}>
+            https://spacex.land/
+          </a>
+        </code>
 
         <div className={styles.grid}>
           {!launches
