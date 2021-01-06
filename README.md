@@ -1,6 +1,6 @@
 # SpaceX Launches App
 
-## This web-app displays information about recent SpaceX launches. The app is dynamically updated after new launches take place. GraphQL is utilized to dynamically retrieve data from the SpaceX.Land.com API and next.js.
+This web-app displays information about recent SpaceX launches. The app is dynamically updated after new launches take place. GraphQL is utilized to dynamically retrieve data from the SpaceX.Land.com API and next.js.
 
 <img src="/styles/page.png" width="100%" />
 
