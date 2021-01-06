@@ -1,11 +1,11 @@
 import Head from "next/head";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 import styles from "../styles/Home.module.css";
 
 export default function Home({ launches }) {
-  console.log("launchs", launches);
-
+  // PAGINATION
+  // the page is loaded with 10 launches, and is updated when "Load More" button is clicked
   const [launchNum, setLaunchNum] = useState(10);
 
   return (
@@ -27,6 +27,10 @@ export default function Home({ launches }) {
         </code>
 
         <div className={styles.grid}>
+          {/* InMemoryCache is being used, so the loading screen should only show up the first time the page is loaded*/}
+          {/* Hydrates the page with launch data  */}
+          {/* The first two results are removed (due to aesthetics)
+          and will increase when the "Load More" button is clicked */}
           {!launches
             ? "Loading..."
             : launches.slice(2, launchNum).map((launch) => {
